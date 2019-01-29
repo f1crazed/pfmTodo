@@ -1,0 +1,20 @@
+<html>
+    <head>
+        {% if title %}
+        <title>Python Flask Mongo Todo List - {{ title }}</title>
+        {% else %}
+        <title>Python Flask Mongo Todo List</title>
+        {% endif %}
+        <link href={{ url_for('static', filename='style.css')}} type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src={{ url_for('static', filename='main.js') }}></script>
+    </head>
+    <body>
+        <div id="divHeading">
+            <h1>Python Flask Mongo</h1>
+            <h2>Todo List</h2>
+        </div>
+        <div>
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
