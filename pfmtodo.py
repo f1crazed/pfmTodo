@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-from flask import request
+from flask import request, redirect
 
 app = Flask(__name__)
 
@@ -13,9 +13,9 @@ def index():
 def createtodo():
     if request.method == 'GET':
         title = "Create"
+        return render_template('createtodo.html', title=title)
     if request.method == 'POST':
-        ""
-    return render_template('createtodo.html', title=title)
+         return redirect("index", code=302)
 
 if __name__ == '__main__':
     app.run()
