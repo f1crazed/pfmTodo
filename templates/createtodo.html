@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Create</h3>
+    <form id="frmCreate" action="/create" method="POST">
+        <div>
+            <label>Task:&nbsp;</label>
+            <input type="text" name="txtTodo" />
+        </div>
+        <div>
+            <lable>Complete By:&nbsp;</lable>
+            <input type="date" name="txtCompleteDate" />
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
+{% endblock %}
