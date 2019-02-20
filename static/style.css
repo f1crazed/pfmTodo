@@ -1,0 +1,40 @@
+body{
+    margin: 8px;
+    padding: 0;
+    font-family: monospace;
+}
+
+
+
+
+
+
+div#divMenuBar {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+div#divMenuBar > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #8f0303;
+    border-radius: 8px;
+}
+
+div#divMenuBar > ul > li {
+    float: left;
+}
+
+div#divMenuBar > ul > li > a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+div#divMenuBar > ul > li > a:hover {
+    background-color: #530303;
+}
