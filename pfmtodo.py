@@ -26,6 +26,7 @@ def createtodo():
     if request.method == 'POST':
         if form.validate():
             print form.task.data
+            print form.due_date.data
         return redirect(url_for('index'))
 
 if __name__ == '__main__':
