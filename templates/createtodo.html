@@ -4,15 +4,14 @@
     <h3>Create</h3>
     <form id="frmCreate" action="/create" method="POST">
         <div>
-            <label>Task:&nbsp;</label>
-            <input type="text" name="txtTodo" />
+            {{ form.task.label }}&nbsp;{{ form.task(autocomplete='off') }}
         </div>
         <div>
-            <lable>Complete By:&nbsp;</lable>
-            <input type="date" name="txtCompleteDate" />
+            {{ form.due_date.label }}&nbsp;{{ form.due_date(type='date') }}
         </div>
         <div>
             <button type="submit">Save Task</button>
         </div>
+        {{ form.csrf_token }}
     </form>
 {% endblock %}
