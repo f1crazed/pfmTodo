@@ -2,5 +2,13 @@
 
 {% block content %}
     <h3>Active Todo List</h3>
-    
+    <div>
+        {% for t in todos %}
+        <div>
+            <span>{{t.task_text}}</span>
+            <span>{{t.create_date}}</span>
+            <span><a href={{ url_for('completed', id=t._id) }}>Completed</a></span>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
