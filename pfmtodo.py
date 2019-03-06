@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request, redirect
 from wtforms import Form, TextField, DateField, validators
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 from datetime import datetime
 
 class Todo():
@@ -13,6 +14,7 @@ class Todo():
         self.create_date = None
         self.complete_date = None
     def Set(self, obj):
+        print obj
         self._id = obj['_id']
         self.task_text = obj['task_text']
         self.due_date = obj['due_date']
@@ -32,7 +34,7 @@ app.secret_key = 'development key'
 def index():
     client = MongoClient()
     db = client.pfmTodo
-    return_todos = db.todos.find()
+    return_todos = db.todos.find({'complete_date' : None })
     todos = []
     if return_todos.count() > 0:
         for obj in return_todos:
@@ -63,7 +65,13 @@ def createtodo():
 
 @app.route("/completed/<id>", methods = ['GET'])
 def completed(id):
-
+    client = MongoClient()
+    db = client.pfmTodo
+    returnBSONObject = db.todos.find_one({'_id' : ObjectId(id)})
+    todo = Todo()
+    todo.Set(returnBSONObject)
+    todo.complete_date = datetime.now().strftime('%m-%d-%Y')
+    db.todos.update({'_id' : ObjectId(id)}, todo.__dict__)
     return redirect(url_for("index"))
 
 if __name__ == '__main__':
