@@ -17,12 +17,13 @@ RUN mkdir /app
 WORKDIR /app
 
 
+COPY . /app
 
-ADD  requirements.txt .
+#ADD  requirements.txt .
 
 RUN pip install -r requirements.txt
 
-ADD . .
+#ADD . .
 
 EXPOSE 5000
 

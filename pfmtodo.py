@@ -8,13 +8,12 @@ from datetime import datetime
 
 class Todo():
     def __init__(self):
-        self._id = ""
+        self._id = ObjectId()
         self.task_text = ""
         self.due_date = None
         self.create_date = None
         self.complete_date = None
     def Set(self, obj):
-        print obj
         self._id = obj['_id']
         self.task_text = obj['task_text']
         self.due_date = obj['due_date']
@@ -59,8 +58,6 @@ def createtodo():
             client = MongoClient()
             db = client.pfmTodo
             db.todos.insert(t.__dict__)
-            print form.task.data
-            print form.due_date.data
         return redirect(url_for('index'))
 
 @app.route("/completed/<id>", methods = ['GET'])
