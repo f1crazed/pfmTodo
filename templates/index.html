@@ -5,9 +5,11 @@
     <div>
         {% for t in todos %}
         <div>
-            <span>{{t.task_text}}</span>
-            <span>{{t.create_date}}</span>
-            <span><a href={{ url_for('completed', id=t._id) }}>Completed</a></span>
+            <div class="divTask">{{t.task_text}}<a href={{ url_for('completed', id=t._id) }}>Completed</a></div>
+            <div>
+                <span><label>Created:&nbsp;</label>{{t.create_date}}</span>
+                <span><label>Due Date:&nbsp;</label>{{t.due_date}}</span>
+            </div>
         </div>
         {% endfor %}
     </div>

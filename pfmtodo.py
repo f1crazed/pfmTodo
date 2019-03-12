@@ -43,6 +43,22 @@ def index():
 
     return render_template('index.html', todos=todos)
 
+
+
+@app.route("/todoscompleted")
+def todoscompleted():
+    client = MongoClient()
+    db = client.pfmTodo
+    return_todos = db.todos.find({'complete_date' :{"$ne":None} })
+    todos = []
+    if return_todos.count() > 0:
+        for obj in return_todos:
+            t = Todo()
+            t.Set(obj)
+            todos.append(t)
+
+    return render_template('completed.html', todos=todos)
+
 @app.route("/create", methods = ['GET', 'POST'])
 def createtodo():
     form = CreateTodoForm(request.form)
@@ -59,6 +75,7 @@ def createtodo():
             db = client.pfmTodo
             db.todos.insert(t.__dict__)
         return redirect(url_for('index'))
+
 
 @app.route("/completed/<id>", methods = ['GET'])
 def completed(id):
