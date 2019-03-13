@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Completed Todo List</h3>
+    <div>
+        {% for t in todos %}
+        <div>
+            <div class="divTask">{{t.task_text}}</div>
+            <div>
+                <span><label>Created:&nbsp;</label>{{t.create_date}}</span>
+                <span><label>Due Date:&nbsp;</label>{{t.due_date}}</span>
+                <span><label>Date Completed:&nbsp;</label>{{t.complete_date}}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
