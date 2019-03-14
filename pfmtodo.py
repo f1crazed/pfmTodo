@@ -21,7 +21,7 @@ class Todo():
         self.complete_date = obj['complete_date']
 
 class CreateTodoForm(Form):
-    task = TextField("Task: ", validators=[validators.required()])
+    task = TextField("Task:", validators=[validators.required()])
     due_date = DateField("Due Date:", validators=[validators.required()])
 
 app = Flask(__name__)
