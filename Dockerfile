@@ -3,12 +3,9 @@ FROM ubuntu:latest
 
 RUN apt-get update
 RUN apt-get upgrade -y
-#RUN apt-get install -y systemd
 RUN apt-get install -y python
 RUN apt-get install -y python-pip
 RUN apt-get install -y mongodb
-#RUN systemctl enable mongodb.service
-#RUN service mongodb start
 RUN pip install setuptools
 
 
@@ -24,18 +21,14 @@ WORKDIR /app
 
 COPY . /app
 
-#ADD  requirements.txt .
-
 RUN pip install -r requirements.txt
-
-#ADD . .
 
 EXPOSE 5000
 
 ENV FLASK_APP=pfmtodo.py
 ENV FLASK_DEBUG=1
 
-#CMD ["flask", "run", "--host", "0.0.0.0"]
+
 CMD ./startapp.sh
 
 # docker build -t pfmtodo-app .
