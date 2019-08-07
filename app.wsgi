@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0,"/mnt/usb1/webapps/showmusiclibrary/showmusiclibrary/")
+sys.path.insert(0,"/app")
 
 from pfmtodo import app as application
 
