@@ -4,7 +4,7 @@
     <h3>Create</h3>
     <form id="frmCreate" action="/create" method="POST">
         <div>
-            {{ form.task.label }}&nbsp;{{ form.task(autocomplete='off') }}
+            {{ form.task.label }}&nbsp;{{ form.task(autocomplete='off', class='task') }}
         </div>
         <div>
             {{ form.due_date.label }}&nbsp;{{ form.due_date(type='date') }}
