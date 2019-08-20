@@ -1,10 +1,7 @@
-#FROM ubuntu:latest
 FROM python:latest
 
 RUN apt-get update
 RUN apt-get upgrade -y
-#RUN apt-get install -y python
-#RUN apt-get install -y python-pip
 RUN apt-get install -y mongodb
 RUN pip3 install --upgrade pip
 RUN pip3 install setuptools
