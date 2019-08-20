@@ -5,6 +5,7 @@ from wtforms import Form, TextField, DateField, validators
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
+import platform
 
 class Todo():
     def __init__(self):
@@ -26,6 +27,7 @@ class CreateTodoForm(Form):
 
 app = Flask(__name__)
 app.secret_key = 'development key'
+pvrsn = platform.python_version()
 
 
 @app.route("/")
@@ -41,7 +43,7 @@ def index():
             t.Set(obj)
             todos.append(t)
 
-    return render_template('index.html', todos=todos)
+    return render_template('index.html', todos=todos, pvrsn=pvrsn)
 
 
 
