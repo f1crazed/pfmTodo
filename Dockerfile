@@ -24,7 +24,7 @@ ENV FLASK_RUN_PORT=5000
 
 CMD flask run --host 0.0.0.0
 
-# CMD ./startapp.sh
+#CMD ./startapp.sh
 
 # docker build -t pfmtodo-app .
 # docker run -d -p 5000:5000 -v C:/Users/Jeremy/Dev/pfmTodo:/app --name pfmtodo-server pfmtodo-app
