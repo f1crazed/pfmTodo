@@ -96,5 +96,5 @@ def completed(id):
     db.todos.update({'_id' : ObjectId(id)}, todo.__dict__)
     return redirect(url_for("index"))
 
-# if __name__ == '__main__':
-#     app.run()
+if __name__ == '__main__':
+    app.run()
