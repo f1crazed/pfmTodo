@@ -1,0 +1,9 @@
+.git
+.venv
+.vscode
+.DS_Store
+.Python	
+README.md
+__pycache__
+docker-compose.yml
+pip-selfcheck.json

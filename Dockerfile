@@ -1,28 +1,41 @@
-FROM python
+FROM debian:latest
 
 
-# RUN apt-get update
-# RUN apt-get upgrade -y
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install python3 -y
+RUN apt-get install python3-pip -y
+RUN apt-get install libexpat1  -y
+RUN apt-get install build-essential -y
+RUN apt-get install apache2 -y
+RUN apt-get install apache2-utils -y
+RUN apt-get install libapache2-mod-wsgi-py3 -y
+RUN apt-get install vim -y
+RUN apt-get clean \
+ && apt-get autoremove \
+ && rm -rf /var/lib/apt/lists/*
 RUN pip3 install --upgrade pip
-RUN pip3 install setuptools
+
+
+COPY pfmtodo.conf /etc/apache2/sites-available/apache-flask.conf
+
+RUN a2enmod headers
 
 RUN mkdir /app
-
-
 WORKDIR /app
-
-
 COPY . /app
 
 RUN pip3 install -r requirements.txt
 
-EXPOSE 5000
 
-ENV FLASK_APP=pfmtodo.py
-ENV FLASK_DEBUG=1
-ENV FLASK_RUN_PORT=5000
+RUN a2dissite 000-default.conf
+RUN a2ensite apache-flask.conf
+RUN service apache2 restart
 
-CMD flask run --host 0.0.0.0
+EXPOSE 80
+
+CMD  /usr/sbin/apache2ctl -D FOREGROUND
+
 
 #CMD ./startapp.sh
 
