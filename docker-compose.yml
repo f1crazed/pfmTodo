@@ -11,6 +11,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: p4ssw0rd
       ME_CONFIG_MONGODB_ADMINUSERNAME: pfmtodouser
       ME_CONFIG_MONGODB_ADMINPASSWORD: p4ssw0rd
+    volumes:
+      - ./data:/data/db
   
   website:
     build: .
